@@ -1,10 +1,17 @@
+#![warn(clippy::all, clippy::pedantic)]
+
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
 fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+    format!("Hello, {name}! You've been greeted from Rust!")
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
+/// Build and run the Tauri application.
+///
+/// # Panics
+///
+/// This function will panic if the Tauri application fails to build.
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
