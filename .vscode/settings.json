@@ -1,0 +1,11 @@
+{
+  "git.inputValidation": true,
+  "git.inputValidationSubjectLength": 50,
+  "git.inputValidationLength": 72,
+  "files.eol": "\n",
+  "rust-analyzer.check.command": "clippy",
+  "[rust]": {
+    "editor.tabSize": 3
+  },
+  "eslint.validate": ["javascript", "typescript", "vue"]
+}
