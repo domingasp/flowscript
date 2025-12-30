@@ -74,7 +74,11 @@ export default defineConfig([
         },
         { pattern: "views/**", type: "views" },
       ],
-      "boundaries/ignore": ["**/(router|main).ts", "**/*.config.ts"],
+      "boundaries/ignore": [
+        "**/(router|main).ts",
+        "**/*.config.ts",
+        "scripts/*",
+      ],
       "import/resolver": {
         typescript: {
           alwaysTryTypes: true,
