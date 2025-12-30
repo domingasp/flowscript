@@ -4,7 +4,8 @@ import { watch } from "vue";
 
 const colorScheme = usePreferredColorScheme();
 watch(colorScheme, (scheme) => {
-  document.documentElement.setAttribute("data-theme", scheme);
+  document.documentElement.classList.remove("light", "dark");
+  document.documentElement.classList.add(scheme);
 });
 </script>
 

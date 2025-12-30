@@ -1,13 +1,29 @@
-$padding-sm: 0.5rem;
-$padding-md: 1rem;
-$padding-lg: 1.5rem;
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/gray-dark.css";
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 2rem;
+
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+$radius-full: 9999px;
 
 :root {
-  --color-background: #ffffff;
-  --color-foreground: #000000;
+  --color-background: var(--gray-2);
+  --color-foreground: var(--gray-12);
 }
 
-[data-theme="dark"] {
-  --color-background: #121212;
-  --color-foreground: #ffffff;
-}
+/* .dark goes here */

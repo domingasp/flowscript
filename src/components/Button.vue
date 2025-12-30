@@ -30,7 +30,7 @@ withDefaults(
 
 <style lang="scss" scoped>
 .button {
-  padding: $padding-lg;
+  padding: $spacing-md;
 }
 
 .primary {

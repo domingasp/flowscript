@@ -11,7 +11,7 @@
       const scheme = window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
-      document.documentElement.setAttribute("data-theme", scheme);
+      document.documentElement.classList.add(scheme);
     </script>
   </head>
 

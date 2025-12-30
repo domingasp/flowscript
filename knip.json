@@ -6,5 +6,6 @@
     "interface": true,
     "type": true
   },
+  "ignoreDependencies": ["@radix-ui/colors"],
   "tags": ["-lintignore"]
 }
