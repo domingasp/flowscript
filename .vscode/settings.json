@@ -12,5 +12,6 @@
   "html.format.wrapLineLength": 80,
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
-  }
+  },
+  "stylelint.validate": ["css", "scss", "vue", "postcss"]
 }
