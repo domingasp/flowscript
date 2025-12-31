@@ -1,58 +1,82 @@
 <script setup lang="ts">
 import { cva, VariantProps } from "class-variance-authority";
+import { useSlots } from "vue";
 
 const button = cva("button", {
-  variants: {
-    variant: {
-      default: "default",
-    },
-  },
+	variants: {
+		icon: {
+			true: "icon",
+		},
+		variant: {
+			default: "default",
+		},
+	},
 });
 
 type ButtonProps = VariantProps<typeof button>;
 
 withDefaults(
-  defineProps<{
-    variant?: ButtonProps["variant"];
-  }>(),
-  {
-    variant: "default",
-  }
+	defineProps<{
+		variant?: ButtonProps["variant"];
+	}>(),
+	{
+		variant: "default",
+	}
 );
+
+const slots = useSlots();
 </script>
 
 <template>
-  <button v-bind="$attrs" :class="button({ variant })">
-    <slot />
-  </button>
+	<button v-bind="$attrs"
+		:class="button({ variant, icon: !!slots.icon && !slots.default })"
+		class="button">
+		<slot name="icon" />
+		<slot />
+	</button>
 </template>
 
 <style lang="scss" scoped>
 .button {
-  padding-inline: $spacing-md;
-  padding-block: $spacing-sm;
-  border-radius: $radius-lg;
-  font-size: $font-size-md;
-  font-weight: $font-weight-medium;
-  border: solid 1px;
+	@include user-select(none);
+	flex-shrink: 0;
 
-  transition: background-color $transition-duration-sm,
-    border-color $transition-duration-sm, outline $transition-duration-sm;
+	padding-inline: $spacing-lg;
+	padding-block: $spacing-md;
+	border-radius: $radius-xl;
+	font-size: $font-size-md;
+	font-weight: $font-weight-medium;
+	border: solid 1px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: $spacing-sm;
+	font-size: 1rem;
+
+	transition: background-color $transition-duration-sm,
+		border-color $transition-duration-sm, outline $transition-duration-sm;
+}
+
+.icon {
+	--button-height: 2.785rem;
+	width: var(--button-height);
+	height: var(--button-height);
+	padding: 0;
 }
 
 .default {
-  background-color: var(--color-fill-brand);
-  color: var(--color-fill-on-brand);
-  border-color: var(--color-fill-brand);
+	background-color: var(--color-fill-brand);
+	color: var(--color-fill-on-brand);
+	border-color: var(--color-fill-brand);
 
-  &:hover {
-    background-color: var(--color-fill-brand-hover);
-    border-color: var(--color-fill-brand-hover);
-  }
+	&:hover {
+		background-color: var(--color-fill-brand-hover);
+		border-color: var(--color-fill-brand-hover);
+	}
 
-  &:active {
-    background-color: var(--color-fill-brand-active);
-    border-color: var(--color-fill-brand-active);
-  }
+	&:active {
+		background-color: var(--color-fill-brand-active);
+		border-color: var(--color-fill-brand-active);
+	}
 }
 </style>

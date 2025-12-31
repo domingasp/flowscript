@@ -4,13 +4,13 @@ import { watch } from "vue";
 
 const colorScheme = usePreferredColorScheme();
 watch(colorScheme, (scheme) => {
-  document.documentElement.classList.remove("light", "dark");
-  document.documentElement.classList.add(scheme);
+	document.documentElement.classList.remove("light", "dark");
+	document.documentElement.classList.add(scheme);
 });
 </script>
 
 <template>
-  <main class="container">
-    <RouterView />
-  </main>
+	<main class="container">
+		<RouterView />
+	</main>
 </template>

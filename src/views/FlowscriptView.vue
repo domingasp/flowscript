@@ -3,6 +3,6 @@ import Example from "../features/example/Example.vue";
 </script>
 
 <template>
-  <h1>Flowscript</h1>
-  <Example />
+	<h1>Flowscript</h1>
+	<Example />
 </template>
