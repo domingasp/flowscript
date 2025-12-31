@@ -7,5 +7,10 @@
   "[rust]": {
     "editor.tabSize": 3
   },
-  "eslint.validate": ["javascript", "typescript", "vue"]
+  "eslint.validate": ["javascript", "typescript", "vue"],
+  "html.format.wrapAttributes": "auto",
+  "html.format.wrapLineLength": 80,
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  }
 }

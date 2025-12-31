@@ -1,0 +1,18 @@
+@use "fonts";
+
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--focus);
+}
+
+.lucide {
+  width: 1em;
+  height: 1em;
+}
