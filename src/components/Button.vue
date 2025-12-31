@@ -4,8 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 const button = cva("button", {
   variants: {
     variant: {
-      primary: "primary",
-      secondary: "secondary",
+      default: "default",
     },
   },
 });
@@ -17,7 +16,7 @@ withDefaults(
     variant?: ButtonProps["variant"];
   }>(),
   {
-    variant: "primary",
+    variant: "default",
   }
 );
 </script>
@@ -30,14 +29,30 @@ withDefaults(
 
 <style lang="scss" scoped>
 .button {
-  padding: $spacing-md;
+  padding-inline: $spacing-md;
+  padding-block: $spacing-sm;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  border: solid 1px;
+
+  transition: background-color $transition-duration-sm,
+    border-color $transition-duration-sm, outline $transition-duration-sm;
 }
 
-.primary {
-  background-color: red;
-}
+.default {
+  background-color: var(--color-fill-brand);
+  color: var(--color-fill-on-brand);
+  border-color: var(--color-fill-brand);
 
-.secondary {
-  background-color: blue;
+  &:hover {
+    background-color: var(--color-fill-brand-hover);
+    border-color: var(--color-fill-brand-hover);
+  }
+
+  &:active {
+    background-color: var(--color-fill-brand-active);
+    border-color: var(--color-fill-brand-active);
+  }
 }
 </style>

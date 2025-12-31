@@ -1,11 +1,14 @@
 @import "@radix-ui/colors/gray.css";
 @import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/blue-dark.css";
 
 $spacing-xs: 0.25rem;
 $spacing-sm: 0.5rem;
-$spacing-md: 1rem;
-$spacing-lg: 1.5rem;
-$spacing-xl: 2rem;
+$spacing-md: 0.75rem;
+$spacing-lg: 1rem;
+$spacing-xl: 1.5rem;
+$spacing-2xl: 2rem;
 
 $font-size-xs: 0.75rem;
 $font-size-sm: 0.875rem;
@@ -15,15 +18,41 @@ $font-size-xl: 1.25rem;
 $font-size-2xl: 1.5rem;
 $font-size-3xl: 2rem;
 
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
 $radius-sm: 0.25rem;
 $radius-md: 0.5rem;
 $radius-lg: 0.75rem;
 $radius-xl: 1rem;
 $radius-full: 9999px;
 
+$transition-duration-sm: 150ms;
+$transition-duration-md: 225ms;
+$transition-duration-lg: 300ms;
+
 :root {
   --color-background: var(--gray-2);
   --color-foreground: var(--gray-12);
+
+  --color-fill-brand: var(--gray-12);
+  --color-fill-brand-hover: oklch(
+    from var(--color-fill-brand) calc(l + 0.1) c h
+  );
+  --color-fill-brand-active: oklch(
+    from var(--color-fill-brand) calc(l + 0.15) c h
+  );
+  --color-fill-on-brand: var(--gray-1);
+
+  --focus: var(--blue-9);
 }
 
-/* .dark goes here */
+.dark {
+  --color-fill-brand-hover: oklch(
+    from var(--color-fill-brand) calc(l - 0.05) c h
+  );
+  --color-fill-brand-active: oklch(
+    from var(--color-fill-brand) calc(l - 0.1) c h
+  );
+}
