@@ -6,6 +6,10 @@
     "interface": true,
     "type": true
   },
-  "ignoreDependencies": ["@radix-ui/colors"],
+  "ignoreDependencies": [
+    "@radix-ui/colors",
+    "postcss-scss",
+    "stylelint-config-standard"
+  ],
   "tags": ["-lintignore"]
 }

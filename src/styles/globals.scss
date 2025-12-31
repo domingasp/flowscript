@@ -2,10 +2,10 @@
 
 html,
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
 }
 
 *:focus-visible {

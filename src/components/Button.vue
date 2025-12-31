@@ -39,20 +39,17 @@ const slots = useSlots();
 <style lang="scss" scoped>
 .button {
 	@include user-select(none);
+	display: flex;
 	flex-shrink: 0;
-
-	padding-inline: $spacing-lg;
+	gap: $spacing-sm;
+	align-items: center;
+	justify-content: center;
 	padding-block: $spacing-md;
-	border-radius: $radius-xl;
+	padding-inline: $spacing-lg;
 	font-size: $font-size-md;
 	font-weight: $font-weight-medium;
 	border: solid 1px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: $spacing-sm;
-	font-size: 1rem;
-
+	border-radius: $radius-xl;
 	transition: background-color $transition-duration-sm,
 		border-color $transition-duration-sm, outline $transition-duration-sm;
 }
@@ -65,8 +62,8 @@ const slots = useSlots();
 }
 
 .default {
-	background-color: var(--color-fill-brand);
 	color: var(--color-fill-on-brand);
+	background-color: var(--color-fill-brand);
 	border-color: var(--color-fill-brand);
 
 	&:hover {

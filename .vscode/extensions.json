@@ -6,6 +6,7 @@
     "dbaeumer.vscode-eslint",
     "blueglassblock.better-json5",
     "mrmlnc.vscode-scss",
-    "vunguyentuan.vscode-css-variables"
+    "vunguyentuan.vscode-css-variables",
+    "stylelint.vscode-stylelint"
   ]
 }
