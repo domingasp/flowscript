@@ -36,6 +36,8 @@ $transition-duration-lg: 300ms;
   --color-background: var(--gray-2);
   --color-foreground: var(--gray-12);
 
+  --color-foreground-secondary: var(--gray-11);
+
   --color-fill-brand: var(--gray-12);
   --color-fill-brand-hover: oklch(
     from var(--color-fill-brand) calc(l + 0.1) c h

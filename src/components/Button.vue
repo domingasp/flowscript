@@ -9,6 +9,7 @@ const button = cva("button", {
 		},
 		variant: {
 			default: "default",
+			ghost: "ghost",
 		},
 	},
 });
@@ -74,6 +75,20 @@ const slots = useSlots();
 	&:active {
 		background-color: var(--color-fill-brand-active);
 		border-color: var(--color-fill-brand-active);
+	}
+}
+
+.ghost {
+	color: var(--color-fill-brand);
+	background-color: transparent;
+	border-color: transparent;
+
+	&:hover {
+		color: var(--color-fill-brand-hover);
+	}
+
+	&:active {
+		color: var(--color-fill-brand-active);
 	}
 }
 </style>

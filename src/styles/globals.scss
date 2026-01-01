@@ -2,6 +2,7 @@
 
 html,
 body {
+  margin: 0;
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   color: var(--color-foreground);
@@ -15,4 +16,8 @@ body {
 .lucide {
   width: 1em;
   height: 1em;
+}
+
+p {
+  font-size: 1rem;
 }
