@@ -11,7 +11,8 @@
     "lint": "knip && stylelint '**/*.{css,scss,vue,postcss}' && eslint . && cd src-tauri && cargo clippy",
     "lint:debug": "cross-env ESLINT_PLUGIN_BOUNDARIES_DEBUG=1 eslint .",
     "knip": "knip",
-    "generate-icons": "tsx scripts/generate-icons.ts"
+    "generate-icons": "tsx scripts/generate-icons.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
@@ -22,6 +23,9 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-conventional": "^20.3.0",
+    "@commitlint/types": "^20.2.0",
     "@eslint/js": "^9.39.2",
     "@tauri-apps/cli": "^2",
     "@types/node": "^25.0.3",
@@ -33,6 +37,7 @@
     "eslint-plugin-perfectionist": "^5.1.0",
     "eslint-plugin-vue": "^10.6.2",
     "globals": "^16.5.0",
+    "husky": "^9.1.7",
     "jiti": "^2.6.1",
     "knip": "^5.78.0",
     "postcss-html": "^1.8.0",
