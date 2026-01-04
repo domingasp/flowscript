@@ -6,11 +6,6 @@
     "interface": true,
     "type": true
   },
-  "ignoreDependencies": [
-    "@radix-ui/colors",
-    "postcss-scss",
-    "stylelint-config-standard",
-    "@commitlint/cli"
-  ],
+  "ignoreDependencies": ["@commitlint/cli"],
   "tags": ["-lintignore"]
 }
