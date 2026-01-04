@@ -2,13 +2,13 @@
 import { usePreferredColorScheme } from "@vueuse/core";
 import { watch } from "vue";
 
-import "./styles/globals.css";
-
 const colorScheme = usePreferredColorScheme();
+
+// FOUC only happens in dev, not in production builds
 watch(colorScheme, (scheme) => {
 	document.documentElement.classList.remove("light", "dark");
 	document.documentElement.classList.add(scheme);
-});
+}, { immediate: true });
 </script>
 
 <template>

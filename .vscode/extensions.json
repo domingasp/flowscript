@@ -6,6 +6,7 @@
     "dbaeumer.vscode-eslint",
     "blueglassblock.better-json5",
     "vunguyentuan.vscode-css-variables",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "bradlc.vscode-tailwindcss"
   ]
 }

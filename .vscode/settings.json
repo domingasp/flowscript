@@ -14,5 +14,8 @@
     "editor.defaultFormatter": "Vue.volar"
   },
   "conventionalCommits.gitmoji": false,
-  "tailwindCSS.classFunctions": ["tv"]
+  "tailwindCSS.classFunctions": ["tv"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

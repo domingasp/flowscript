@@ -1,1 +1,49 @@
+@import "./fonts.css";
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+
+  --transition-duration-sm: 150ms;
+  --transition-duration-md: 225ms;
+  --transition-duration-lg: 300ms;
+
+  /* --------------------------------- Colors --------------------------------- */
+  --color-focus: var(--color-blue-500);
+
+  --color-background: var(--color-neutral-50);
+  --color-foreground: var(--color-neutral-900);
+
+  --color-fill-brand: var(--color-red-500);
+  --color-fill-brand-hover: var(--color-green-500);
+  --color-fill-brand-active: var(--color-green-500);
+
+  --color-fill-on-brand: var(--color-blue-500);
+}
+
+@layer themes {
+  .dark {
+    --color-background: var(--color-neutral-900);
+    --color-foreground: var(--color-neutral-100);
+  }
+}
+
+@layer base {
+  html,
+  body {
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+  }
+
+  .lucide {
+    width: 1em;
+    height: 1em;
+  }
+
+  *:focus-visible {
+    /* TODO offset? */
+    @apply ring-3 ring-focus outline-none;
+  }
+}
