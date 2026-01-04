@@ -2,6 +2,8 @@
 import { usePreferredColorScheme } from "@vueuse/core";
 import { watch } from "vue";
 
+import "./styles/globals.css";
+
 const colorScheme = usePreferredColorScheme();
 watch(colorScheme, (scheme) => {
 	document.documentElement.classList.remove("light", "dark");

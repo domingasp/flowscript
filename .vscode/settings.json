@@ -13,5 +13,6 @@
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
   },
-  "conventionalCommits.gitmoji": false
+  "conventionalCommits.gitmoji": false,
+  "tailwindCSS.classFunctions": ["tv"]
 }

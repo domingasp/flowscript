@@ -25,6 +25,6 @@ import Button from "../../components/Button.vue";
 .wrapper {
 	display: flex;
 	flex-direction: row;
-	gap: $spacing-md;
+	// gap: $spacing-md;
 }
 </style>

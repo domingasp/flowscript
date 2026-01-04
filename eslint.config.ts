@@ -6,6 +6,8 @@ import pluginVue from "eslint-plugin-vue";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import betterTailwindCss from "eslint-plugin-better-tailwindcss";
+import tailwindVariants from 'eslint-plugin-tailwind-variants';
 
 export default defineConfig([
   globalIgnores(["src-tauri/**", "**/*.d.ts", "*.config.ts"]),
@@ -34,7 +36,7 @@ export default defineConfig([
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
-  // #endregion
+  // #endregion TypeScript
 
   // #region Boundaries
   {
@@ -87,11 +89,25 @@ export default defineConfig([
       },
     },
   },
-  // #endregion
+  // #endregion Boundaries
 
   // #region Perfectionist
   perfectionist.configs["recommended-natural"],
-  // #endregion
+  // #endregion Perfectionist
+
+  // #region Tailwind CSS
+	{
+		"settings": {
+			"better-tailwindcss": {
+				"entryPoint": "src/styles/globals.css"
+			}
+		}
+	},
+	// @ts-ignore TODO: Remove ts-ignore when the types are fixed in a future release
+	betterTailwindCss.configs.recommended,
+	// @ts-ignore TODO: Remove ts-ignore when the types are fixed in a future release
+	tailwindVariants.configs.recommended
+  // #endregion Tailwind CSS
 
   // #region Disable rules
   {
@@ -100,5 +116,5 @@ export default defineConfig([
       "vue/multi-word-component-names": "off",
     },
   },
-  // #endregion
+  // #endregion Disable rules
 ]);
