@@ -9,7 +9,8 @@
   "ignoreDependencies": [
     "@radix-ui/colors",
     "postcss-scss",
-    "stylelint-config-standard"
+    "stylelint-config-standard",
+    "@commitlint/cli"
   ],
   "tags": ["-lintignore"]
 }

@@ -13,5 +13,6 @@
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
   },
-  "stylelint.validate": ["css", "scss", "vue", "postcss"]
+  "stylelint.validate": ["css", "scss", "vue", "postcss"],
+  "conventionalCommits.gitmoji": false
 }
