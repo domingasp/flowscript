@@ -90,7 +90,6 @@ export default defineConfig([
   // #endregion
 
   // #region Perfectionist
-  // @ts-expect-error https://github.com/azat-io/eslint-plugin-perfectionist/issues/655
   perfectionist.configs["recommended-natural"],
   // #endregion
 
