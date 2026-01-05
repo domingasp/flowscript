@@ -73,8 +73,8 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3)
       eslint-plugin-tailwind-variants:
-        specifier: ^1.0.0
-        version: 1.0.0(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3)(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@2.6.1)))
+        specifier: ^1.0.2
+        version: 1.0.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3)
       eslint-plugin-vue:
         specifier: ^10.6.2
         version: 10.6.2(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@2.6.1)))
@@ -1596,13 +1596,11 @@ packages:
     peerDependencies:
       eslint: '>=8.45.0'
 
-  eslint-plugin-tailwind-variants@1.0.0:
-    resolution: {integrity: sha512-nbu8yplNaBkYDG4r9qBdvU91HoFV8SZaWzo4JpFLU1Jkg2YisZZIjBXEOw8odn602JrnIyFw/S8HI8XUK9G/+g==}
+  eslint-plugin-tailwind-variants@1.0.2:
+    resolution: {integrity: sha512-Q/64NPqHRgB0qMqRF+nvxolwSiZxxtQPww5F/q9ta5tz7eTTTJpqclgQEaSLTwP8TaKEMHjDiD9fkAWOajAAhw==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@typescript-eslint/parser': '>8.0.0'
       eslint: '>9.0.0'
-      vue-eslint-parser: ^9.4.0
 
   eslint-plugin-vue@10.6.2:
     resolution: {integrity: sha512-nA5yUs/B1KmKzvC42fyD0+l9Yd+LtEpVhWRbXuDj0e+ZURcTtyRbMDWUeJmTAh2wC6jC83raS63anNM2YT3NPw==}
@@ -3808,12 +3806,10 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-tailwind-variants@1.0.0(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3)(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@2.6.1))):
+  eslint-plugin-tailwind-variants@1.0.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3):
     dependencies:
-      '@typescript-eslint/parser': 8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3)
       '@typescript-eslint/utils': 8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.6.3)
       eslint: 9.39.2(jiti@2.6.1)
-      vue-eslint-parser: 10.2.0(eslint@9.39.2(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
       - typescript

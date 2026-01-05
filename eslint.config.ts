@@ -7,7 +7,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import betterTailwindCss from "eslint-plugin-better-tailwindcss";
-import tailwindVariants from 'eslint-plugin-tailwind-variants';
+import tailwindVariants from "eslint-plugin-tailwind-variants";
 
 export default defineConfig([
   globalIgnores(["src-tauri/**", "**/*.d.ts", "*.config.ts"]),
@@ -96,17 +96,20 @@ export default defineConfig([
   // #endregion Perfectionist
 
   // #region Tailwind CSS
-	{
-		"settings": {
-			"better-tailwindcss": {
-				"entryPoint": "src/styles/globals.css"
-			}
-		}
-	},
-	// @ts-ignore TODO: Remove ts-ignore when the types are fixed in a future release
-	betterTailwindCss.configs.recommended,
-	// @ts-ignore TODO: Remove ts-ignore when the types are fixed in a future release
-	tailwindVariants.configs.recommended
+  {
+    files: ["**/*.{ts,vue}"],
+    plugins: { "better-tailwindcss": betterTailwindCss },
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "src/styles/globals.css",
+      },
+    },
+    rules: {
+      ...betterTailwindCss.configs["recommended-warn"].rules,
+      ...betterTailwindCss.configs["recommended-error"].rules,
+    },
+  },
+  tailwindVariants.configs.recommended,
   // #endregion Tailwind CSS
 
   // #region Disable rules
