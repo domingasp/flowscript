@@ -17,6 +17,11 @@ const buttonVariants = tv({
      border-fill-brand bg-fill-brand text-fill-on-brand
      hover:border-fill-brand-hover hover:bg-fill-brand-hover
      active:border-fill-brand-active active:bg-fill-brand-active
+   `,
+			ghost: `
+     border-transparent bg-transparent text-fill-brand
+     hover:text-fill-brand-hover
+     active:text-fill-brand-active
    `
 		}
 	}

@@ -7,11 +7,18 @@ import Button from '../../components/Button.vue';
 
 <template>
 	<div>
-		<div class="container">
-			<img src="@/assets/flowscript.svg" class="logo" />
-			<p class="subtitle">Keep your words flowing smoothly</p>
+		<div class="
+    relative flex flex-col items-center justify-center gap-md p-md pt-53
+  ">
+			<img src="@/assets/flowscript.svg" class="
+     absolute top-0 h-64 -rotate-5 opacity-30 grayscale
+     not-dark:invert
+   " />
+			<p class="text-foreground-secondary">Keep your words
+				flowing smoothly
+			</p>
 
-			<div class="actions">
+			<div class="flex gap-lg">
 				<Button>
 					<FilePlusCorner />New Script
 				</Button>
@@ -22,39 +29,3 @@ import Button from '../../components/Button.vue';
 		</div>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-.container {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	gap: $spacing-lg;
-	align-items: center;
-	justify-content: center;
-	padding: $font-size-md;
-	padding-top: 14rem;
-}
-
-.subtitle {
-	margin: 0;
-	color: var(--color-foreground-secondary);
-}
-
-.actions {
-	display: flex;
-	gap: $spacing-lg;
-}
-
-.logo {
-	position: absolute;
-	top: 0;
-	height: 16rem;
-	opacity: 0.3;
-	filter: grayscale(1) invert(1);
-	transform: rotate(-5deg);
-}
-
-.dark .logo {
-	filter: grayscale(1);
-}
-</style>

@@ -34,10 +34,7 @@ export default defineConfig([
     files: ["**/*.vue"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
     rules: {
-      "vue/multi-word-component-names": [
-        "error",
-        { ignores: ["Example", "Second"] },
-      ],
+      "vue/multi-word-component-names": ["error", { ignores: ["Launchpad"] }],
     },
   },
   // #endregion Vue
