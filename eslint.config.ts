@@ -6,9 +6,17 @@ import pluginVue from "eslint-plugin-vue";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import betterTailwindCss from "eslint-plugin-better-tailwindcss";
+import tailwindVariants from "eslint-plugin-tailwind-variants";
 
 export default defineConfig([
-  globalIgnores(["src-tauri/**", "**/*.d.ts", "*.config.ts"]),
+  globalIgnores([
+    "src-tauri/**",
+    "**/*.d.ts",
+    "*.config.ts",
+    "dist",
+    "node_modules",
+  ]),
   {
     extends: ["js/recommended"],
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
@@ -16,7 +24,12 @@ export default defineConfig([
     plugins: { js },
   },
   tseslint.configs.recommended,
-  pluginVue.configs["flat/essential"],
+
+  // #region Vue
+  ...pluginVue.configs["flat/essential"].map((config) => ({
+    ...config,
+    files: ["**/*.vue"],
+  })),
   {
     files: ["**/*.vue"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
@@ -27,6 +40,7 @@ export default defineConfig([
       ],
     },
   },
+  // #endregion Vue
 
   // #region TypeScript
   {
@@ -34,7 +48,7 @@ export default defineConfig([
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
-  // #endregion
+  // #endregion TypeScript
 
   // #region Boundaries
   {
@@ -87,11 +101,31 @@ export default defineConfig([
       },
     },
   },
-  // #endregion
+  // #endregion Boundaries
 
   // #region Perfectionist
-  perfectionist.configs["recommended-natural"],
-  // #endregion
+  {
+    ...perfectionist.configs["recommended-natural"],
+    files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
+  },
+  // #endregion Perfectionist
+
+  // #region Tailwind CSS
+  {
+    files: ["**/*.{ts,vue}"],
+    plugins: { "better-tailwindcss": betterTailwindCss },
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "src/styles/globals.css",
+      },
+    },
+    rules: {
+      ...betterTailwindCss.configs["recommended-warn"].rules,
+      ...betterTailwindCss.configs["recommended-error"].rules,
+    },
+  },
+  ...tailwindVariants.configs.recommended,
+  // #endregion Tailwind CSS
 
   // #region Disable rules
   {
@@ -100,5 +134,5 @@ export default defineConfig([
       "vue/multi-word-component-names": "off",
     },
   },
-  // #endregion
+  // #endregion Disable rules
 ]);

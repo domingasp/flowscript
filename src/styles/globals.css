@@ -1,0 +1,62 @@
+@import "./fonts.css";
+@import "tailwindcss";
+
+@theme {
+  --spacing-2xl: 2rem;
+  --spacing-lg: 1rem;
+  --spacing-md: 0.75rem;
+  --spacing-sm: 0.5rem;
+  --spacing-sm-md: 0.6rem;
+  --spacing-xl: 1.5rem;
+  --spacing-xs: 0.25rem;
+
+  --font-sans: "Inter", sans-serif;
+
+  --transition-duration-lg: 300ms;
+  --transition-duration-md: 225ms;
+  --transition-duration-sm: 150ms;
+
+  --color-background: var(--color-neutral-50);
+  --color-fill-brand: var(--color-neutral-900);
+  --color-fill-brand-active: oklch(
+    from var(--color-fill-brand) calc(l + 0.15) c h
+  );
+  --color-fill-brand-hover: oklch(
+    from var(--color-fill-brand) calc(l + 0.1) c h
+  );
+  --color-fill-on-brand: var(--color-neutral-50);
+  --color-focus: var(--color-blue-500);
+  --color-foreground: var(--color-neutral-900);
+}
+
+@layer themes {
+  .dark {
+    --color-background: var(--color-neutral-900);
+    --color-fill-brand: var(--color-neutral-50);
+    --color-fill-brand-active: oklch(
+      from var(--color-fill-brand) calc(l - 0.15) c h
+    );
+    --color-fill-brand-hover: oklch(
+      from var(--color-fill-brand) calc(l - 0.1) c h
+    );
+    --color-fill-on-brand: var(--color-neutral-900);
+    --color-foreground: var(--color-neutral-100);
+  }
+}
+
+@layer base {
+  html,
+  body {
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+  }
+
+  .lucide {
+    width: 1em;
+    height: 1em;
+  }
+
+  *:focus-visible {
+    @apply ring-offset-2 ring-offset-background ring-2 ring-focus outline-none;
+  }
+}

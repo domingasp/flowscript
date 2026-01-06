@@ -5,9 +5,8 @@
     "rust-lang.rust-analyzer",
     "dbaeumer.vscode-eslint",
     "blueglassblock.better-json5",
-    "mrmlnc.vscode-scss",
     "vunguyentuan.vscode-css-variables",
-    "stylelint.vscode-stylelint",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "bradlc.vscode-tailwindcss"
   ]
 }

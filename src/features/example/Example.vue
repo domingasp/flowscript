@@ -5,7 +5,7 @@ import Button from "../../components/Button.vue";
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="flex flex-row gap-md">
 		<Button @click="console.log('Clicked')">Click Me</Button>
 		<Button>
 			<template v-slot:icon>
@@ -20,11 +20,3 @@ import Button from "../../components/Button.vue";
 		</Button>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-.wrapper {
-	display: flex;
-	flex-direction: row;
-	gap: $spacing-md;
-}
-</style>
