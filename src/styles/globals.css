@@ -1,45 +1,46 @@
 @import "./fonts.css";
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --transition-duration-sm: 150ms;
-  --transition-duration-md: 225ms;
-  --transition-duration-lg: 300ms;
-  --spacing-sm-md: 0.6rem;
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 0.75rem;
-  --spacing-lg: 1rem;
-  --spacing-xl: 1.5rem;
   --spacing-2xl: 2rem;
-  --color-focus: var(--color-blue-500);
+  --spacing-lg: 1rem;
+  --spacing-md: 0.75rem;
+  --spacing-sm: 0.5rem;
+  --spacing-sm-md: 0.6rem;
+  --spacing-xl: 1.5rem;
+  --spacing-xs: 0.25rem;
+
+  --font-sans: "Inter", sans-serif;
+
+  --transition-duration-lg: 300ms;
+  --transition-duration-md: 225ms;
+  --transition-duration-sm: 150ms;
+
   --color-background: var(--color-neutral-50);
-  --color-foreground: var(--color-neutral-900);
   --color-fill-brand: var(--color-neutral-900);
-  --color-fill-brand-hover: oklch(
-    from var(--color-fill-brand) calc(l + 0.1) c h
-  );
   --color-fill-brand-active: oklch(
     from var(--color-fill-brand) calc(l + 0.15) c h
   );
+  --color-fill-brand-hover: oklch(
+    from var(--color-fill-brand) calc(l + 0.1) c h
+  );
   --color-fill-on-brand: var(--color-neutral-50);
+  --color-focus: var(--color-blue-500);
+  --color-foreground: var(--color-neutral-900);
 }
 
 @layer themes {
   .dark {
     --color-background: var(--color-neutral-900);
-    --color-foreground: var(--color-neutral-100);
     --color-fill-brand: var(--color-neutral-50);
-    --color-fill-brand-hover: oklch(
-      from var(--color-fill-brand) calc(l - 0.1) c h
-    );
     --color-fill-brand-active: oklch(
       from var(--color-fill-brand) calc(l - 0.15) c h
     );
+    --color-fill-brand-hover: oklch(
+      from var(--color-fill-brand) calc(l - 0.1) c h
+    );
     --color-fill-on-brand: var(--color-neutral-900);
+    --color-foreground: var(--color-neutral-100);
   }
 }
 

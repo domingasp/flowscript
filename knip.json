@@ -6,6 +6,6 @@
     "interface": true,
     "type": true
   },
-  "ignoreDependencies": ["@commitlint/cli"],
+  "ignoreDependencies": [],
   "tags": ["-lintignore"]
 }

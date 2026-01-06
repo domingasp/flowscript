@@ -10,7 +10,13 @@ import betterTailwindCss from "eslint-plugin-better-tailwindcss";
 import tailwindVariants from "eslint-plugin-tailwind-variants";
 
 export default defineConfig([
-  globalIgnores(["src-tauri/**", "**/*.d.ts", "*.config.ts"]),
+  globalIgnores([
+    "src-tauri/**",
+    "**/*.d.ts",
+    "*.config.ts",
+    "dist",
+    "node_modules",
+  ]),
   {
     extends: ["js/recommended"],
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
@@ -18,7 +24,12 @@ export default defineConfig([
     plugins: { js },
   },
   tseslint.configs.recommended,
-  pluginVue.configs["flat/essential"],
+
+  // #region Vue
+  ...pluginVue.configs["flat/essential"].map((config) => ({
+    ...config,
+    files: ["**/*.vue"],
+  })),
   {
     files: ["**/*.vue"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
@@ -29,6 +40,7 @@ export default defineConfig([
       ],
     },
   },
+  // #endregion Vue
 
   // #region TypeScript
   {
@@ -92,7 +104,10 @@ export default defineConfig([
   // #endregion Boundaries
 
   // #region Perfectionist
-  perfectionist.configs["recommended-natural"],
+  {
+    ...perfectionist.configs["recommended-natural"],
+    files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
+  },
   // #endregion Perfectionist
 
   // #region Tailwind CSS
@@ -109,7 +124,7 @@ export default defineConfig([
       ...betterTailwindCss.configs["recommended-error"].rules,
     },
   },
-  tailwindVariants.configs.recommended,
+  ...tailwindVariants.configs.recommended,
   // #endregion Tailwind CSS
 
   // #region Disable rules
