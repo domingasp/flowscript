@@ -1,78 +1,44 @@
 <script setup lang="ts">
-// import { useSlots } from "vue";
+import { tv, VariantProps } from 'tailwind-variants';
+import { useSlots } from 'vue';
 
-// const button = cva("button", {
-// 	variants: {
-// 		icon: {
-// 			true: "icon",
-// 		},
-// 		variant: {
-// 			default: "default",
-// 		},
-// 	},
-// });
+const buttonVariants = tv({
+	base: `
+   flex shrink-0 items-center justify-center gap-sm rounded-xl border-1
+   border-transparent font-medium transition-all select-none
+ `,
+	variants: {
+		size: {
+			default: "px-md py-sm",
+			icon: "h-[2.625rem] w-[2.625rem] p-0"
+		},
+		variant: {
+			default: `
+     border-fill-brand bg-fill-brand text-fill-on-brand
+     hover:border-fill-brand-hover hover:bg-fill-brand-hover
+     active:border-fill-brand-active active:bg-fill-brand-active
+   `
+		}
+	}
+});
 
-// type ButtonProps = VariantProps<typeof button>;
+type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-// withDefaults(
-// 	defineProps<{
-// 		variant?: ButtonProps["variant"];
-// 	}>(),
-// 	{
-// 		variant: "default",
-// 	}
-// );
+withDefaults(
+	defineProps<{
+		variant?: ButtonVariants['variant'];
+	}>(),
+	{
+		variant: 'default'
+	})
 
-// const slots = useSlots();
-// 		:class="button({ variant, icon: !!slots.icon && !slots.default })"
-
+const slots = useSlots();
 </script>
 
 <template>
-	<button v-bind="$attrs" class="button">
+	<button v-bind="$attrs"
+		:class="buttonVariants({ variant, size: !!slots.icon && !slots.default ? 'icon' : 'default' })">
 		<slot name="icon" />
 		<slot />
 	</button>
 </template>
-
-<style lang="scss" scoped>
-.button {
-	// @include user-select(none);
-	// display: flex;
-	// flex-shrink: 0;
-	// gap: $spacing-sm;
-	// align-items: center;
-	// justify-content: center;
-	// padding-block: $spacing-md;
-	// padding-inline: $spacing-lg;
-	// font-size: $font-size-md;
-	// font-weight: $font-weight-medium;
-	// border: solid 1px;
-	// border-radius: $radius-xl;
-	// transition: background-color $transition-duration-sm,
-	// 	border-color $transition-duration-sm, outline $transition-duration-sm;
-}
-
-.icon {
-	--button-height: 2.785rem;
-	width: var(--button-height);
-	height: var(--button-height);
-	padding: 0;
-}
-
-.default {
-	color: var(--color-fill-on-brand);
-	background-color: var(--color-fill-brand);
-	border-color: var(--color-fill-brand);
-
-	&:hover {
-		background-color: var(--color-fill-brand-hover);
-		border-color: var(--color-fill-brand-hover);
-	}
-
-	&:active {
-		background-color: var(--color-fill-brand-active);
-		border-color: var(--color-fill-brand-active);
-	}
-}
-</style>
