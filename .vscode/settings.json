@@ -7,7 +7,7 @@
   "[rust]": {
     "editor.tabSize": 3
   },
-  "eslint.validate": ["javascript", "typescript", "vue"],
+  "eslint.validate": ["javascript", "typescript", "vue", "css"],
   "html.format.wrapAttributes": "auto",
   "html.format.wrapLineLength": 80,
   "[vue]": {
@@ -15,7 +15,5 @@
   },
   "conventionalCommits.gitmoji": false,
   "tailwindCSS.classFunctions": ["tv"],
-  "files.associations": {
-    "*.css": "tailwindcss"
-  }
+  "css.customData": [".vscode/tailwind.json"]
 }
