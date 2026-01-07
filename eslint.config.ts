@@ -59,6 +59,10 @@ export default defineConfig([
           default: "disallow",
           rules: [
             {
+              allow: ["stores"],
+              from: "features",
+            },
+            {
               allow: ["features"],
               from: "views",
             },
@@ -84,6 +88,7 @@ export default defineConfig([
           type: "features",
         },
         { pattern: "views/**", type: "views" },
+        { pattern: "stores/**", type: "stores" },
       ],
       "boundaries/ignore": [
         "**/(router|main).ts",
