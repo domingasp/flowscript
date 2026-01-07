@@ -1,21 +1,29 @@
 <script setup lang="ts">
 import { open, save } from '@tauri-apps/plugin-dialog';
+import { create } from '@tauri-apps/plugin-fs';
+import { platform } from '@tauri-apps/plugin-os';
 import { FilePlusCorner, FolderOpen } from 'lucide-vue-next';
+// import mime from 'mime-types';
+import mime from 'mime';
 
 import Button from '../../components/Button.vue';
 import { useFileStore } from '../../stores/file.store';
 
 const DEFAULT_FILE_NAME = "Untitled Script.md";
-const SUPPORTED_FILE_FILTERS = [{ extensions: ['md', 'markdown'], name: "Markdown Files" }];
+const SUPPORTED_FILE_FILTERS = [{ extensions: ['md', 'markdown'], name: "Markdown content" }];
 
 const fileStore = useFileStore();
 
 const onOpen = () =>
 	open({
-		filters: SUPPORTED_FILE_FILTERS,
-		multiple: false
+		directory: false,
+		// Known bug: iOS file dialog does not support filters
+		// https://github.com/tauri-apps/plugins-workspace/issues/3030
+		filters: platform() === "ios" ? undefined : SUPPORTED_FILE_FILTERS,
+		multiple: false,
 	}).then((path) => {
 		if (!path) return;
+		if (mime.getType(path) !== 'text/markdown') return;
 		fileStore.setCurrentFile(path)
 	})
 
@@ -23,8 +31,15 @@ const onOpen = () =>
 const onNew = () => save({
 	defaultPath: DEFAULT_FILE_NAME,
 	filters: SUPPORTED_FILE_FILTERS,
-}).then((path) => {
-	console.log(path);
+}).then(async (path) => {
+	if (!path) return;
+	// Native file dialog handles check to overwrite existing files
+	try {
+		(await create(path)).close();
+		fileStore.setCurrentFile(path);
+	} catch (e) {
+		console.error("Error creating new file:", e);
+	}
 });
 </script>
 
