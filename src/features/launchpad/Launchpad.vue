@@ -3,16 +3,20 @@ import { open, save } from '@tauri-apps/plugin-dialog';
 import { FilePlusCorner, FolderOpen } from 'lucide-vue-next';
 
 import Button from '../../components/Button.vue';
+import { useFileStore } from '../../stores/file.store';
 
 const DEFAULT_FILE_NAME = "Untitled Script.md";
 const SUPPORTED_FILE_FILTERS = [{ extensions: ['md', 'markdown'], name: "Markdown Files" }];
+
+const fileStore = useFileStore();
 
 const onOpen = () =>
 	open({
 		filters: SUPPORTED_FILE_FILTERS,
 		multiple: false
 	}).then((path) => {
-		console.log(path);
+		if (!path) return;
+		fileStore.setCurrentFile(path)
 	})
 
 
@@ -29,6 +33,9 @@ const onNew = () => save({
 		<div class="
     relative flex flex-col items-center justify-center gap-md p-md pt-53
   ">
+			<div>Current path: {{ fileStore.currentFile?.path }}</div>
+			<div>Current name: {{ fileStore.currentFile?.name }}</div>
+
 			<img src="@/assets/flowscript.svg" class="
      absolute top-0 h-64 -rotate-5 opacity-30 grayscale
      not-dark:invert
