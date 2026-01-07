@@ -1,8 +1,27 @@
 <script setup lang="ts">
+import { open, save } from '@tauri-apps/plugin-dialog';
 import { FilePlusCorner, FolderOpen } from 'lucide-vue-next';
 
 import Button from '../../components/Button.vue';
 
+const DEFAULT_FILE_NAME = "Untitled Script.md";
+const SUPPORTED_FILE_FILTERS = [{ extensions: ['md', 'markdown'], name: "Markdown Files" }];
+
+const onOpen = () =>
+	open({
+		filters: SUPPORTED_FILE_FILTERS,
+		multiple: false
+	}).then((path) => {
+		console.log(path);
+	})
+
+
+const onNew = () => save({
+	defaultPath: DEFAULT_FILE_NAME,
+	filters: SUPPORTED_FILE_FILTERS,
+}).then((path) => {
+	console.log(path);
+});
 </script>
 
 <template>
@@ -19,10 +38,10 @@ import Button from '../../components/Button.vue';
 			</p>
 
 			<div class="flex gap-lg">
-				<Button>
+				<Button @click="onNew">
 					<FilePlusCorner />New Script
 				</Button>
-				<Button variant="ghost">
+				<Button variant="ghost" @click="onOpen">
 					<FolderOpen />Open
 				</Button>
 			</div>
