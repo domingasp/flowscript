@@ -12,29 +12,34 @@ import { useFileStore } from '../../stores/file.store';
 const DEFAULT_FILE_NAME = "Untitled Script";
 const SUPPORTED_FILE_FILTERS = [{ extensions: ['md', 'markdown'], name: "Markdown content" }];
 
+const currentPlatform = platform();
+
 const fileStore = useFileStore();
 
-const onOpen = () =>
+const onOpen = () => {
+
 	open({
 		directory: false,
 		// Known bug: iOS file dialog does not support filters
 		// https://github.com/tauri-apps/plugins-workspace/issues/3030
-		filters: platform() === "ios" ? undefined : SUPPORTED_FILE_FILTERS,
+		filters: currentPlatform === "ios" ? undefined : SUPPORTED_FILE_FILTERS,
 		multiple: false,
 	}).then((path) => {
 		if (!path) return;
-		if (platform() === "ios" && mime.getType(path) !== 'text/markdown') return;
+		if (currentPlatform === "ios" && mime.getType(path) !== 'text/markdown') return;
 		return fileStore.setCurrentFile(path);
-	}).catch((e) => console.error("Error opening file:", e));
+	}).catch((e) => console.error("Error opening file:", e))
+};
 
-
-const onNew = platform() === 'android' ? () => AndroidFs.showSaveFilePicker(
+const onNewAndroid = () => AndroidFs.showSaveFilePicker(
 	DEFAULT_FILE_NAME,
 	'text/markdown',
 ).then((uri) => {
 	if (!uri) return;
 	return fileStore.setCurrentFile(uri.uri);
-}).catch((e) => console.error("Error creating new file:", e)) : () => save({
+}).catch((e) => console.error("Error creating new file:", e));
+
+const onNewDefault = () => save({
 	defaultPath: `${DEFAULT_FILE_NAME}.md`,
 	filters: SUPPORTED_FILE_FILTERS,
 }).then(async (path) => {
@@ -44,12 +49,13 @@ const onNew = platform() === 'android' ? () => AndroidFs.showSaveFilePicker(
 		(await create(path)).close();
 	} catch (e) {
 		console.error("Error creating new file:", e);
-		return
+		return;
 	}
 
 	return fileStore.setCurrentFile(path);
+}).catch((e) => console.error("Error creating new file:", e));
 
-});
+const onNew = currentPlatform === 'android' ? onNewAndroid : onNewDefault;
 </script>
 
 <template>
@@ -57,9 +63,6 @@ const onNew = platform() === 'android' ? () => AndroidFs.showSaveFilePicker(
 		<div class="
     relative flex flex-col items-center justify-center gap-md p-md pt-53
   ">
-			<div>Current path: {{ fileStore.currentFile?.path }}</div>
-			<div>Current name: {{ fileStore.currentFile?.name }}</div>
-
 			<img src="@/assets/flowscript.svg" class="
      absolute top-0 h-64 -rotate-5 opacity-30 grayscale
      not-dark:invert

@@ -27,6 +27,4 @@ tauri-plugin-fs = "2"
 tauri-plugin-os = "2"
 
 [target.'cfg(target_os = "android")'.dependencies]
-tauri-plugin-android-fs = { version = "24.1", features = [
-	"legacy_storage_permission",
-] }
+tauri-plugin-android-fs = { version = "24.1" }

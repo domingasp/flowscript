@@ -9,6 +9,8 @@ type FileState = {
   };
 };
 
+const currentPlatform = platform();
+
 export const useFileStore = defineStore("file", {
   actions: {
     async setCurrentFile(path: string | undefined) {
@@ -19,7 +21,7 @@ export const useFileStore = defineStore("file", {
 
       const name = await basename(path);
       this.currentFile = {
-        name: platform() === "ios" ? decodeURI(name) : name,
+        name: currentPlatform === "ios" ? decodeURIComponent(name) : name,
         path,
       };
     },
