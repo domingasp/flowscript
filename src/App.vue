@@ -12,7 +12,7 @@ watch(colorScheme, (scheme) => {
 </script>
 
 <template>
-	<main class="container">
+	<main>
 		<div data-tauri-drag-region class="absolute top-0 left-0 z-10 h-7 w-full" />
 		<RouterView />
 	</main>

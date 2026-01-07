@@ -27,6 +27,7 @@
   --color-fill-on-brand: var(--color-neutral-50);
   --color-focus: var(--color-blue-500);
   --color-foreground: var(--color-neutral-900);
+  --color-foreground-secondary: var(--color-neutral-700);
 }
 
 @layer themes {
@@ -41,6 +42,7 @@
     );
     --color-fill-on-brand: var(--color-neutral-900);
     --color-foreground: var(--color-neutral-100);
+    --color-foreground-secondary: var(--color-neutral-400);
   }
 }
 

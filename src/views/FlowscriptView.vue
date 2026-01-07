@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import Example from "../features/example/Example.vue";
+import Launchpad from "../features/launchpad/Launchpad.vue";
 </script>
 
 <template>
-	<h1>Flowscript</h1>
-	<Example />
+	<div class="flex h-dvh flex-col items-center justify-center">
+		<Launchpad />
+	</div>
 </template>
