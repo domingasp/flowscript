@@ -1,4 +1,4 @@
-import { sep } from "@tauri-apps/api/path";
+import { basename } from "@tauri-apps/api/path";
 import { platform } from "@tauri-apps/plugin-os";
 import { defineStore } from "pinia";
 
@@ -11,15 +11,13 @@ type FileState = {
 
 export const useFileStore = defineStore("file", {
   actions: {
-    setCurrentFile(path: string | undefined) {
+    async setCurrentFile(path: string | undefined) {
       if (!path) {
         this.currentFile = undefined;
         return;
       }
 
-      const lastSepIndex = path.lastIndexOf(sep());
-      const name = lastSepIndex !== -1 ? path.slice(lastSepIndex + 1) : path;
-
+      const name = await basename(path);
       this.currentFile = {
         name: platform() === "ios" ? decodeURI(name) : name,
         path,

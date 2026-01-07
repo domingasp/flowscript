@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/android-schema.json",
+  "identifier": "android",
+  "windows": ["flowscript"],
+  "platforms": ["android"],
+  "permissions": ["android-fs:default"]
+}

@@ -27,6 +27,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.1.18",
+    "tauri-plugin-android-fs-api": "^24.1.0",
     "vue": "^3.5.26",
     "vue-router": "^4.6.4"
   },
