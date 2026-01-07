@@ -3,7 +3,7 @@ import Launchpad from "../features/launchpad/Launchpad.vue";
 </script>
 
 <template>
-	<div class="flex h-dvh flex-col items-center justify-center">
-		<Launchpad />
-	</div>
+  <div class="flex h-dvh flex-col items-center justify-center">
+    <Launchpad />
+  </div>
 </template>

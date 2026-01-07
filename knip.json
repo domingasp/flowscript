@@ -6,6 +6,6 @@
     "interface": true,
     "type": true
   },
-  "ignoreDependencies": [],
+  "ignoreDependencies": ["prettier"],
   "tags": ["-lintignore"]
 }
