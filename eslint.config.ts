@@ -8,6 +8,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import betterTailwindCss from "eslint-plugin-better-tailwindcss";
 import tailwindVariants from "eslint-plugin-tailwind-variants";
+import prettier from "eslint-config-prettier";
 
 export default defineConfig([
   globalIgnores([
@@ -26,7 +27,7 @@ export default defineConfig([
   tseslint.configs.recommended,
 
   // #region Vue
-  ...pluginVue.configs["flat/essential"].map((config) => ({
+  ...pluginVue.configs["flat/recommended"].map((config) => ({
     ...config,
     files: ["**/*.vue"],
   })),
@@ -35,6 +36,7 @@ export default defineConfig([
     languageOptions: { parserOptions: { parser: tseslint.parser } },
     rules: {
       "vue/multi-word-component-names": ["error", { ignores: ["Launchpad"] }],
+      "vue/html-indent": ["error", "tab"],
     },
   },
   // #endregion Vue
@@ -112,6 +114,10 @@ export default defineConfig([
   },
   // #endregion Perfectionist
 
+  // #region Overrides for Prettier
+  prettier,
+  // #endregion Overrides for Prettier
+
   // #region Tailwind CSS
   {
     files: ["**/*.{ts,vue}"],
@@ -124,6 +130,12 @@ export default defineConfig([
     rules: {
       ...betterTailwindCss.configs["recommended-warn"].rules,
       ...betterTailwindCss.configs["recommended-error"].rules,
+      "better-tailwindcss/enforce-consistent-line-wrapping": [
+        "error",
+        {
+          strictness: "loose",
+        },
+      ],
     },
   },
   ...tailwindVariants.configs.recommended,
