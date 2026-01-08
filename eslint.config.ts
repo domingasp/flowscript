@@ -75,6 +75,10 @@ export default defineConfig([
               ],
               from: "features",
             },
+            {
+              allow: [["features", { featureName: "file-drop-overlay" }]],
+              from: "app",
+            },
           ],
         },
       ],

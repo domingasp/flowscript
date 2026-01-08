@@ -69,16 +69,13 @@ const onNew = currentPlatform === "android" ? onNewAndroid : onNewDefault;
   <div
     class="relative flex flex-col items-center justify-center gap-md p-md pt-53"
   >
-    {{
-			/**
-		  * Workaround for prettier + better tailwindcss conflict
-			* https://github.com/schoero/eslint-plugin-better-tailwindcss/issues/243
-			*/
-    }}
+    <!-- 
+			Workaround for prettier + better tailwindcss conflict
+			https://github.com/schoero/eslint-plugin-better-tailwindcss/issues/243
+		-->
     <img
       :class="`
-        absolute top-0 mr-0 mb-0 h-64 -rotate-5 bg-foreground-secondary pt-0
-        pr-0 opacity-30 grayscale
+        absolute top-0 h-64 -rotate-5 opacity-30 grayscale select-none
         not-dark:invert
       `"
       src="@/assets/flowscript.svg"

@@ -2,6 +2,8 @@
 import { usePreferredColorScheme } from "@vueuse/core";
 import { watch } from "vue";
 
+import FileDropOverlay from "./features/file-drop-overlay/FileDropOverlay.vue";
+
 const colorScheme = usePreferredColorScheme();
 
 // FOUC only happens in dev, not in production builds
@@ -19,5 +21,6 @@ watch(
   <main>
     <div data-tauri-drag-region class="absolute top-0 left-0 z-10 h-7 w-full" />
     <RouterView />
+    <FileDropOverlay />
   </main>
 </template>
