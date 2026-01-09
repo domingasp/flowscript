@@ -2,7 +2,9 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Capability for the main window",
-  "windows": ["flowscript"],
+  "windows": [
+    "flowscript"
+  ],
   "permissions": [
     "core:default",
     "core:window:allow-start-dragging",
@@ -10,6 +12,7 @@
     "fs:default",
     "fs:allow-write-text-file",
     "fs:allow-read-text-file",
-    "os:default"
+    "os:default",
+    "deep-link:default"
   ]
 }

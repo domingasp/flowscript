@@ -2,6 +2,7 @@
 import { usePreferredColorScheme } from "@vueuse/core";
 import { watch } from "vue";
 
+import { useDeepLink } from "./composables/use-deep-link.composable";
 import FileDropOverlay from "./features/file-drop-overlay/FileDropOverlay.vue";
 
 const colorScheme = usePreferredColorScheme();
@@ -15,6 +16,8 @@ watch(
   },
   { immediate: true },
 );
+
+useDeepLink();
 </script>
 
 <template>

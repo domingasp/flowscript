@@ -8,6 +8,8 @@
 /// This function will panic if the Tauri application fails to build.
 pub fn run() {
    let builder = tauri::Builder::default()
+      .plugin(tauri_plugin_single_instance::init(|_app, _args, _cwd| {}))
+      .plugin(tauri_plugin_deep_link::init())
       .plugin(tauri_plugin_os::init())
       .plugin(tauri_plugin_fs::init())
       .plugin(tauri_plugin_dialog::init())

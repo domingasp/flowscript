@@ -79,6 +79,14 @@ export default defineConfig([
               allow: [["features", { featureName: "file-drop-overlay" }]],
               from: "app",
             },
+            {
+              allow: ["stores"],
+              from: "composables",
+            },
+            {
+              allow: ["composables"],
+              from: "app",
+            },
           ],
         },
       ],
@@ -95,6 +103,7 @@ export default defineConfig([
         },
         { pattern: "views/**", type: "views" },
         { pattern: "stores/**", type: "stores" },
+        { pattern: "composables/**", type: "composables" },
       ],
       "boundaries/ignore": [
         "**/(router|main).ts",

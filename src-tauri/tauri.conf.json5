@@ -35,5 +35,14 @@
 			"icons/macos/icon.icns",
 			"icons/icon.ico"
 		],
+		fileAssociations: [
+			{
+				"ext": [
+					"md"
+				],
+				mimeType: "text/markdown",
+				rank: "Owner"
+			}
+		]
 	},
 }
