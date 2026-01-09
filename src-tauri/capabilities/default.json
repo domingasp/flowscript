@@ -10,6 +10,7 @@
     "core:window:allow-start-dragging",
     "dialog:default",
     "fs:default",
+		"fs:allow-create",
     "fs:allow-write-text-file",
     "fs:allow-read-text-file",
     "os:default",

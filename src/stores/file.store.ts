@@ -1,5 +1,4 @@
 import { basename } from "@tauri-apps/api/path";
-import { platform } from "@tauri-apps/plugin-os";
 import { defineStore } from "pinia";
 
 type FileState = {
@@ -8,8 +7,6 @@ type FileState = {
     path: string;
   };
 };
-
-const currentPlatform = platform();
 
 export const useFileStore = defineStore("file", {
   actions: {
@@ -21,7 +18,8 @@ export const useFileStore = defineStore("file", {
 
       const name = await basename(path);
       this.currentFile = {
-        name: currentPlatform === "ios" ? decodeURIComponent(name) : name,
+        // deep link URLs are encoded
+        name: decodeURIComponent(name),
         path,
       };
     },

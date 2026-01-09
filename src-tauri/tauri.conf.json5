@@ -45,4 +45,14 @@
 			}
 		]
 	},
+	plugins: {
+		"deep-link": {
+			"desktop": {
+				"schemes": [
+					"flowscript",
+					"file"
+				]
+			}
+		}
+	}
 }

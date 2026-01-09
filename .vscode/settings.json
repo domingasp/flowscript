@@ -5,7 +5,8 @@
   "files.eol": "\n",
   "rust-analyzer.check.command": "clippy",
   "[rust]": {
-    "editor.tabSize": 3
+    "editor.tabSize": 3,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "eslint.validate": ["javascript", "typescript", "vue", "css"],
   "html.format.wrapAttributes": "auto",
