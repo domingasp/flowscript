@@ -17,5 +17,8 @@
   },
   "conventionalCommits.gitmoji": false,
   "tailwindCSS.classFunctions": ["tv"],
-  "css.customData": [".vscode/tailwind.json"]
+  "css.customData": [".vscode/tailwind.json"],
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  }
 }

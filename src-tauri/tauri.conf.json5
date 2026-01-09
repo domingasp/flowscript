@@ -41,9 +41,18 @@
 					"md"
 				],
 				mimeType: "text/markdown",
-				rank: "Owner"
+				name: "Markdown Document",
+				rank: "Owner",
+				role: "Editor",
+				contentTypes: [
+					"net.daringfireball.markdown",
+					"public.plain-text"
+				],
 			}
-		]
+		],
+		iOS: {
+			developmentTeam: "ABCDEFGHIJ",
+		}
 	},
 	plugins: {
 		"deep-link": {
