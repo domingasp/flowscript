@@ -2,7 +2,7 @@ import { basename } from "@tauri-apps/api/path";
 import { getCurrent, onOpenUrl } from "@tauri-apps/plugin-deep-link";
 import { platform } from "@tauri-apps/plugin-os";
 import mime from "mime";
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 
 import { useFileStore } from "../stores/file.store";
 
@@ -18,7 +18,12 @@ export function useDeepLink() {
       );
     }
 
-    return filePaths.filter((url) => mime.getType(url) === "text/markdown");
+    const markdownIndices = filePaths
+      .map((path, i) => ({ i, path }))
+      .filter(({ path }) => mime.getType(path) === "text/markdown")
+      .map(({ i }) => i);
+
+    return markdownIndices.map((i) => urls[i]);
   }
 
   async function handleUrls(urls: string[]) {
@@ -28,12 +33,19 @@ export function useDeepLink() {
     }
   }
 
+  let unlisten: () => void;
   onMounted(async () => {
     const startUrls = await getCurrent();
     if (startUrls && startUrls.length > 0) {
       handleUrls(startUrls);
     }
 
-    onOpenUrl(handleUrls);
+    onOpenUrl(handleUrls).then((fn) => {
+      unlisten = fn;
+    });
+  });
+
+  onUnmounted(() => {
+    unlisten?.();
   });
 }
