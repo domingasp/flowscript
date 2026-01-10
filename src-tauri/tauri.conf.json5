@@ -51,6 +51,8 @@
 			}
 		],
 		iOS: {
+			// TODO -- add proper values before publishing to App Store
+			// I do not currently have an Apple Developer account
 			developmentTeam: "ABCDEFGHIJ",
 		},
 		android: {

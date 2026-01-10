@@ -4,6 +4,7 @@
 #[cfg(any(windows, target_os = "linux"))]
 fn convert_file_paths_to_deep_links(args: &[String]) -> Vec<String> {
    use std::path::PathBuf;
+   use url::Url;
 
    let mut result = vec![args[0].clone()];
 
@@ -15,9 +16,12 @@ fn convert_file_paths_to_deep_links(args: &[String]) -> Vec<String> {
 
       let path = PathBuf::from(maybe_file);
       if path.exists() {
-         if let Some(path_str) = path.to_str() {
-            let file_url = format!("file://{}", path_str.replace('\\', "/"));
-            result.push(file_url);
+         if let Ok(absolute_path) = path.canonicalize() {
+            if let Ok(url) = Url::from_file_path(absolute_path) {
+               result.push(url.to_string());
+            } else {
+               result.push(maybe_file.clone());
+            }
          } else {
             result.push(maybe_file.clone());
          }
