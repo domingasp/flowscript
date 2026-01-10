@@ -52,6 +52,10 @@
 		],
 		iOS: {
 			developmentTeam: "ABCDEFGHIJ",
+		},
+		android: {
+			"autoIncrementVersionCode": false,
+			"minSdkVersion": 24,
 		}
 	},
 	plugins: {
