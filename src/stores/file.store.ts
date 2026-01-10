@@ -13,8 +13,8 @@ type FileState = {
 
 const isURL = (str: string) => {
   try {
-    new URL(str);
-    return true;
+    const url = new URL(str);
+    return url.protocol === "file:" || url.protocol === "content:";
   } catch {
     return false;
   }
