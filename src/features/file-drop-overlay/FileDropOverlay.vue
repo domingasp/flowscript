@@ -33,6 +33,8 @@ onUnmounted(() => {
   <Transition
     enter-from-class="opacity-0"
     enter-active-class="transition duration-md"
+    leave-to-class="opacity-0"
+    leave-active-class="transition duration-md"
   >
     <div
       v-if="isFileDragOver"
