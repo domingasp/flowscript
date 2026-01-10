@@ -7,6 +7,7 @@
     "blueglassblock.better-json5",
     "vunguyentuan.vscode-css-variables",
     "vivaxy.vscode-conventional-commits",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "redhat.vscode-xml"
   ]
 }

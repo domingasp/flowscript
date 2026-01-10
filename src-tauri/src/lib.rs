@@ -1,5 +1,8 @@
 #![warn(clippy::all, clippy::pedantic)]
 
+#[cfg(any(windows, target_os = "linux"))]
+mod args;
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 /// Build and run the Tauri application.
 ///
@@ -7,17 +10,53 @@
 ///
 /// This function will panic if the Tauri application fails to build.
 pub fn run() {
-   let builder = tauri::Builder::default()
+   let mut builder = tauri::Builder::default();
+
+   #[cfg(any(windows, target_os = "linux"))]
+   {
+      builder = builder.plugin(tauri_plugin_single_instance::init(
+         |app, argv, _cwd| {
+            use tauri_plugin_deep_link::DeepLinkExt;
+
+            app.deep_link().handle_cli_arguments(
+               args::convert_file_paths_to_deep_links(&argv).into_iter(),
+            );
+         },
+      ));
+   }
+
+   builder = builder
+      .plugin(tauri_plugin_deep_link::init())
+      .plugin(tauri_plugin_log::Builder::new().build())
       .plugin(tauri_plugin_os::init())
       .plugin(tauri_plugin_fs::init())
       .plugin(tauri_plugin_dialog::init())
       .plugin(tauri_plugin_opener::init());
 
    #[cfg(target_os = "android")]
-   let builder = builder.plugin(tauri_plugin_android_fs::init());
+   {
+      builder = builder.plugin(tauri_plugin_android_fs::init());
+   }
+
+   builder = builder.invoke_handler(tauri::generate_handler![]);
+
+   #[cfg(any(windows, target_os = "linux"))]
+   {
+      builder = builder.setup(|app| {
+         use tauri_plugin_deep_link::DeepLinkExt;
+
+         app.deep_link().register_all()?;
+
+         let args: Vec<String> = std::env::args().collect();
+         app.deep_link().handle_cli_arguments(
+            args::convert_file_paths_to_deep_links(&args).into_iter(),
+         );
+
+         Ok(())
+      });
+   }
 
    builder
-      .invoke_handler(tauri::generate_handler![])
       .run(tauri::generate_context!())
       .expect("error while running tauri application");
 }

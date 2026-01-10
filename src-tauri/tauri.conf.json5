@@ -35,5 +35,39 @@
 			"icons/macos/icon.icns",
 			"icons/icon.ico"
 		],
+		fileAssociations: [
+			{
+				"ext": [
+					"md"
+				],
+				mimeType: "text/markdown",
+				name: "Markdown Document",
+				rank: "Owner",
+				role: "Editor",
+				contentTypes: [
+					"net.daringfireball.markdown",
+					"public.plain-text"
+				],
+			}
+		],
+		iOS: {
+			// TODO -- add proper values before publishing to App Store
+			// I do not currently have an Apple Developer account
+			developmentTeam: "ABCDEFGHIJ",
+		},
+		android: {
+			"autoIncrementVersionCode": false,
+			"minSdkVersion": 24,
+		}
 	},
+	plugins: {
+		"deep-link": {
+			"desktop": {
+				"schemes": [
+					"flowscript",
+					"file"
+				]
+			}
+		}
+	}
 }
