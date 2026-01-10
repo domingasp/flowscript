@@ -8,6 +8,15 @@ type FileState = {
   };
 };
 
+const isURL = (str: string) => {
+  try {
+    new URL(str);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 export const useFileStore = defineStore("file", {
   actions: {
     async setCurrentFile(path: string | undefined) {
@@ -18,8 +27,7 @@ export const useFileStore = defineStore("file", {
 
       const name = await basename(path);
       this.currentFile = {
-        // deep link URLs are encoded
-        name: decodeURIComponent(name),
+        name: isURL(path) ? decodeURIComponent(name) : name,
         path,
       };
     },
