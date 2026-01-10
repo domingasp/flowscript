@@ -6,6 +6,10 @@ fn convert_file_paths_to_deep_links(args: &[String]) -> Vec<String> {
    use std::path::PathBuf;
    use url::Url;
 
+   if args.is_empty() {
+      return Vec::new();
+   }
+
    let mut result = vec![args[0].clone()];
 
    for maybe_file in args.iter().skip(1) {
