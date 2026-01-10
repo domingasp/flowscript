@@ -1,5 +1,8 @@
 import { basename } from "@tauri-apps/api/path";
+import { platform } from "@tauri-apps/plugin-os";
 import { defineStore } from "pinia";
+
+const currentPlatform = platform();
 
 type FileState = {
   currentFile?: {
@@ -27,7 +30,11 @@ export const useFileStore = defineStore("file", {
 
       const name = await basename(path);
       this.currentFile = {
-        name: isURL(path) ? decodeURIComponent(name) : name,
+        name:
+          // Android paths use Content URIs ending in numbers
+          isURL(path) && currentPlatform !== "android"
+            ? decodeURIComponent(name)
+            : name,
         path,
       };
     },
